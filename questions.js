@@ -669,16 +669,15 @@ const questions = [
         "section": "Pediatrija"
     },
     {
-        "text": "Ģenētiskā predispozīcija, samazinātas aktivitātes, neveselīgs uzturs,  metabolā",
+        "text": "Ģenētiskā predispozīcija, samazinātas aktivitātes, neveselīgs uzturs,  metabolā programmēšana perinatālajā periodā un agrā bērnībā ir riska faktori:",
         "options": [
-            "programmēšana perinatālajā periodā un agrā bērnībā ir riska faktori:",
             "iedzimtām patoloģijām;",
             "sliktām sekmēm skolā;",
             "liekajam svaram tālākajā dzīvē;",
             "iedzimtam imūndeficīta sindromam;"
         ],
         "correct": [
-            3
+            2
         ],
         "section": "Pediatrija"
     },
@@ -3014,17 +3013,15 @@ const questions = [
         "section": "Neiroloģija"
     },
     {
-        "text": "23.\tMultiplās sklerozes manifestācijas fāzē būs neatgriezeniski nervu sistēmas traucējumu simptomi:",
+        "text": "Multiplās sklerozes manifestācijas fāzē būs neatgriezeniski nervu sistēmas traucējumu simptomi:",
         "options": [
-            "a.  kustību traucējumi, jušanas pārmaiņas, līdzsvara traucējumi. pastāvīga",
-            "noguruma sajūta",
+            "a.  kustību traucējumi, jušanas pārmaiņas, līdzsvara traucējumi. pastāvīga noguruma sajūta",
             "b.  dzirdes traucējumi, troksnis galvā",
             "c.  garšas izmaiņas, rūgta garša mutē",
             "d.  izteikta svīšana, sirdsklauves, trauksme"
         ],
         "correct": [
-            0,
-            1
+            0
         ],
         "section": "Neiroloģija"
     },
@@ -3824,9 +3821,13 @@ const questions = [
             "1)   Diskomforta sajūta vēderā un mainīga vēdera izeja.",
             "2)   Pieņemšanās svarā.",
             "3)   Dzelte.",
-            "4)   Melēna."
+            "4)   Melēna.",
+            "Izvēlies pareizo atbilžu variantu!",
+            "1.+3.",
+            "2.+3.",
+            "1.+4."
         ],
-        "correct": [],
+        "correct": [5],
         "section": "ĶIRURĢIJA"
     },
     {
