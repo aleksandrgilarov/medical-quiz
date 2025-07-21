@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Medical Quiz</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="container" id="startScreen">
+  <h1>🧠 Medicinys Quizs</h1>
+  <label for="questionCount">Cik napīcīšami jautōjumi bys:</label>
+  <input type="number" id="questionCount" value="100" min="1" max="600"/>
+  <label style="margin-left:20px;">
+    <input type="checkbox" id="showSection" />
+    Rōdīt sekciju
+  </label>
+  <br><br>
+  <button onclick="startQuiz()">Sōkt (nu laidam iekšā tūs dakteru džiungļūs!)</button>
+</div>
+
+<div class="container" id="quizScreen" style="display:none;">
+  <form id="quizForm"></form>
+  <button onclick="submitAnswers()">Submit</button>
+  <div id="results"></div>
+</div>
+
+<script src="questions.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
