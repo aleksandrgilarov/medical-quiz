@@ -5587,15 +5587,9 @@ const questions = [
             "Chlamydia trachomatis",
             "Ureaplasma urealyticum",
             "Escherichia coli",
-            "Termins dismenoreja nozīmē:",
-            "neregulārs menstruālais cikls",
-            "sāpīgas menstruācijas",
-            "aizkavējušās menstruācijas",
-            "anovulators cikls"
         ],
         "correct": [
-            1,
-            6
+            1
         ],
         "section": "Ginekoloģija un dzemdniecība"
     },
