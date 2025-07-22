@@ -1,8 +1,10 @@
 let selectedQuestions = [];
+let countdownInterval;
 
 function startQuiz() {
   const count = parseInt(document.getElementById("questionCount").value, 10);
   const showSection = document.getElementById("showSection").checked;
+  const timerDisplay = document.getElementById("timerDisplay");
 
   const selectedSections = Array.from(document.querySelectorAll(".sectionCheckbox:checked"))
       .map(cb => cb.value);
@@ -15,6 +17,16 @@ function startQuiz() {
 
   const form = document.getElementById('quizForm');
   form.innerHTML = '';
+
+  // Timer setup if 100 questions
+  clearInterval(countdownInterval);
+  const useTimer = document.getElementById("useTimer").checked;
+  if (count === 100 && useTimer) {
+    timerDisplay.classList.remove("hidden");
+    startCountdown(60 * 60); // 60 minutes
+  } else {
+    timerDisplay.classList.add("hidden");
+  }
 
   selectedQuestions.forEach((q, idx) => {
     const div = document.createElement('div');
@@ -54,7 +66,32 @@ function startQuiz() {
   });
 }
 
+function startCountdown(duration) {
+  const display = document.getElementById("timerDisplay");
+  let timer = duration;
+
+  function updateDisplay() {
+    const minutes = String(Math.floor(timer / 60)).padStart(2, '0');
+    const seconds = String(timer % 60).padStart(2, '0');
+    display.textContent = `⏱️ Time Left: ${minutes}:${seconds}`;
+  }
+
+  updateDisplay();
+
+  countdownInterval = setInterval(() => {
+    timer--;
+    updateDisplay();
+
+    if (timer <= 0) {
+      clearInterval(countdownInterval);
+      alert("⏰ Time is up! Submitting your answers.");
+      submitAnswers();
+    }
+  }, 1000);
+}
+
 function submitAnswers() {
+  clearInterval(countdownInterval);
   const results = document.getElementById('results');
   results.innerHTML = '';
 
