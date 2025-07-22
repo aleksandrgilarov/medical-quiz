@@ -18,14 +18,15 @@ function startQuiz() {
 
   selectedQuestions.forEach((q, idx) => {
     const div = document.createElement('div');
-    div.className = 'question';
+    div.className = 'bg-white p-4 rounded shadow';
 
-    let header = `<strong>${idx + 1}.</strong> ${q.text}`;
+    let header = `<strong class="text-lg">${idx + 1}.</strong> ${q.text}`;
     if (showSection && q.section) {
-      header += ` <span style="font-style:italic; color:gray;">[${q.section}]</span>`;
+      header += ` <span class="italic text-sm text-gray-500">[${q.section}]</span>`;
     }
 
     const title = document.createElement('p');
+    title.className = 'mb-2 font-semibold';
     title.innerHTML = header;
     div.appendChild(title);
 
@@ -35,17 +36,18 @@ function startQuiz() {
       const id = `q${idx}_opt${optIdx}`;
       const label = document.createElement('label');
       label.htmlFor = id;
+      label.className = 'block mb-1';
 
       const input = document.createElement('input');
       input.type = inputType;
       input.name = `q${idx}`;
       input.value = optIdx;
       input.id = id;
+      input.className = 'mr-2';
 
       label.appendChild(input);
-      label.innerHTML += " " + opt;
+      label.innerHTML += opt;
       div.appendChild(label);
-      div.appendChild(document.createElement('br'));
     });
 
     form.appendChild(div);
@@ -66,22 +68,35 @@ function submitAnswers() {
     if (isCorrect) correctCount++;
 
     const div = document.createElement('div');
-    div.innerHTML = `<strong>${idx + 1}.</strong> ${q.text}<br/>`;
+    div.className = 'bg-white p-4 rounded shadow mb-4';
+
+    div.innerHTML = `<p class="font-semibold mb-1"><strong>${idx + 1}.</strong> ${q.text}</p>`;
 
     q.options.forEach((opt, optIdx) => {
-      const display = correct.includes(optIdx) ? `<span class="correct">${opt}</span>` : opt;
-      div.innerHTML += `- ${display}<br/>`;
+      const isCorrectAns = correct.includes(optIdx);
+      const css = isCorrectAns ? 'text-green-700 font-medium' : 'text-gray-800';
+      div.innerHTML += `<div class="${css}">- ${opt}</div>`;
     });
 
-    div.innerHTML += `<em>${isCorrect ? '✅ Correct' : '❌ Incorrect'}</em><hr/>`;
+    div.innerHTML += `<div class="mt-2 text-sm ${isCorrect ? 'text-green-600' : 'text-red-600'} font-semibold">
+      ${isCorrect ? '✅ Correct' : '❌ Incorrect'}
+    </div>`;
+
     results.appendChild(div);
   });
 
   const percentage = (correctCount / selectedQuestions.length) * 100;
   const pass = percentage >= 75;
+
   const summary = document.createElement('div');
-  summary.innerHTML = `<h2>Score: ${correctCount} / ${selectedQuestions.length} (${percentage.toFixed(1)}%)</h2>
-    <h3 style="color: ${pass ? 'green' : 'red'};">${pass ? '✅ Passed' : '❌ Failed'} (minimum 75%)</h3><hr/>`;
+  summary.className = 'p-4 bg-gray-100 rounded mb-6 border border-gray-300';
+  summary.innerHTML = `
+    <h2 class="text-xl font-bold">Score: ${correctCount} / ${selectedQuestions.length} (${percentage.toFixed(1)}%)</h2>
+    <h3 class="text-lg font-semibold ${pass ? 'text-green-700' : 'text-red-700'}">
+      ${pass ? '✅ Passed' : '❌ Failed'} (minimum 75%)
+    </h3>
+    <hr class="my-2"/>
+  `;
   results.prepend(summary);
 
   window.scrollTo({ top: results.offsetTop, behavior: 'smooth' });
