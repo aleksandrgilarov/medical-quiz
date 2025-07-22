@@ -1,22 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8"/>
+    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Medical Quiz</title>
-    <link rel="stylesheet" href="style.css"/>
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 <div class="container" id="startScreen">
-    <h1>🧠 Medicinys Quizs</h1>
-    <label for="questionCount">Cik napīcīšami jautōjumi bys:</label>
+    <h1>Medical Quiz</h1>
+
+    <label for="questionCount">Number of questions:</label>
     <input type="number" id="questionCount" value="100" min="1" max="600"/>
+
     <label style="margin-left:20px;">
         <input type="checkbox" id="showSection"/>
-        Rōdīt sekciju
+        Show section
     </label>
-    <br><br>
-    <button onclick="startQuiz()">Sōkt (nu laidam iekšā tūs dakteru džiungļūs!)</button>
+
+    <h3>Select Sections:</h3>
+    <button type="button" onclick="toggleSections(true)">Select All</button>
+    <button type="button" onclick="toggleSections(false)">Deselect All</button>
+    <div id="sectionFilters" style="max-height: 200px; overflow-y: auto; border: 1px solid #ccc; padding: 10px;">
+        <label><input type="checkbox" class="sectionCheckbox" value="Dermatoloģija" checked> Dermatoloģija</label><br><label><input type="checkbox" class="sectionCheckbox" value="Endokrinoloģija – 10" checked> Endokrinoloģija – 10</label><br><label><input type="checkbox" class="sectionCheckbox" value="Gastroenteroloģija – 15" checked> Gastroenteroloģija – 15</label><br><label><input type="checkbox" class="sectionCheckbox" value="Ginekoloģija un dzemdniecība" checked> Ginekoloģija un dzemdniecība</label><br><label><input type="checkbox" class="sectionCheckbox" value="INFEKTOLOĢIJA" checked> INFEKTOLOĢIJA</label><br><label><input type="checkbox" class="sectionCheckbox" value="Internās slimības,Hematoloģija" checked> Internās slimības,Hematoloģija</label><br><label><input type="checkbox" class="sectionCheckbox" value="Kardioloģija un elektrokardioloģija" checked> Kardioloģija un elektrokardioloģija</label><br><label><input type="checkbox" class="sectionCheckbox" value="NMP" checked> NMP</label><br><label><input type="checkbox" class="sectionCheckbox" value="Nefroloģija – 15" checked> Nefroloģija – 15</label><br><label><input type="checkbox" class="sectionCheckbox" value="Neiroloģija" checked> Neiroloģija</label><br><label><input type="checkbox" class="sectionCheckbox" value="PSIHIATRIJA" checked> PSIHIATRIJA</label><br><label><input type="checkbox" class="sectionCheckbox" value="Pacientu drošības jautājumi" checked> Pacientu drošības jautājumi</label><br><label><input type="checkbox" class="sectionCheckbox" value="Pediatrija" checked> Pediatrija</label><br><label><input type="checkbox" class="sectionCheckbox" value="Pulmonoloģija – 20" checked> Pulmonoloģija – 20</label><br><label><input type="checkbox" class="sectionCheckbox" value="Reimatoloģija – 10" checked> Reimatoloģija – 10</label><br><label><input type="checkbox" class="sectionCheckbox" value="ĶIRURĢIJA" checked> ĶIRURĢIJA</label><br>
+    </div>
+
+    <br>
+    <button onclick="startQuiz()">Start</button>
 </div>
 
 <div class="container" id="quizScreen" style="display:none;">
@@ -26,6 +36,11 @@
 </div>
 
 <script src="questions.js"></script>
+<script>
+    function toggleSections(selectAll) {
+        document.querySelectorAll('.sectionCheckbox').forEach(cb => cb.checked = selectAll);
+    }
+</script>
 <script src="script.js"></script>
 </body>
 </html>

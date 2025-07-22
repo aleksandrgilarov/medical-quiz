@@ -4,7 +4,11 @@ function startQuiz() {
   const count = parseInt(document.getElementById("questionCount").value, 10);
   const showSection = document.getElementById("showSection").checked;
 
-  selectedQuestions = questions.sort(() => 0.5 - Math.random()).slice(0, count);
+  const selectedSections = Array.from(document.querySelectorAll(".sectionCheckbox:checked"))
+      .map(cb => cb.value);
+
+  const eligibleQuestions = questions.filter(q => selectedSections.includes(q.section));
+  selectedQuestions = eligibleQuestions.sort(() => 0.5 - Math.random()).slice(0, count);
 
   document.getElementById("startScreen").style.display = "none";
   document.getElementById("quizScreen").style.display = "block";
