@@ -8,10 +8,10 @@
 </head>
 <body class="bg-gray-100 text-gray-800">
 <div class="max-w-4xl mx-auto p-6" id="startScreen">
-    <h1 class="text-3xl font-bold mb-4">Medical Quiz</h1>
+    <h1 class="text-3xl font-bold mb-4">Daktaru Quizs</h1>
 
     <div class="mb-4">
-        <label for="questionCount" class="block mb-1 font-medium">Number of questions:</label>
+        <label for="questionCount" class="block mb-1 font-medium">Cik jautōjumi laidīsim?</label>
         <input type="number" id="questionCount" value="100" min="1" max="600" class="w-24 px-2 py-1 border rounded" />
     </div>
 
@@ -20,33 +20,37 @@
         <div class="mb-4">
             <label class="inline-flex items-center space-x-2">
                 <input type="checkbox" id="useTimer" class="form-checkbox" checked />
-                <span>Show timer (only if 100 questions)</span>
+                <span>Rōdēt taimieri (tikai jei 100 jautōjumi!)</span>
             </label>
         </div>
+
         <label class="inline-flex items-center space-x-2">
             <input type="checkbox" id="showSection" class="form-checkbox" />
-            <span>Show section</span>
+            <span>Rōdēt sekciju (gribī zinuot – pediatrija vai vīnōgi?)</span>
         </label>
     </div>
 
     <div class="mb-4">
-        <h3 class="font-semibold mb-2">Select Sections:</h3>
+        <h3 class="font-semibold mb-2">Izavēlies sekcijas:</h3>
         <div class="flex gap-2 mb-2">
-            <button type="button" onclick="toggleSections(true)" class="bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700">Select All</button>
-            <button type="button" onclick="toggleSections(false)" class="bg-gray-400 text-white px-3 py-1 rounded hover:bg-gray-500">Deselect All</button>
+            <button type="button" onclick="toggleSections(true)" class="bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700">Ņemt visus</button>
+            <button type="button" onclick="toggleSections(false)" class="bg-gray-400 text-white px-3 py-1 rounded hover:bg-gray-500">Nuņemt visus</button>
         </div>
+
+
         <div id="sectionFilters" class="h-48 overflow-y-auto border p-3 rounded bg-white space-y-1">
             <label class="block"><input type="checkbox" class="sectionCheckbox mr-2" value="Dermatoloģija" checked> Dermatoloģija</label><label class="block"><input type="checkbox" class="sectionCheckbox mr-2" value="Endokrinoloģija – 10" checked> Endokrinoloģija – 10</label><label class="block"><input type="checkbox" class="sectionCheckbox mr-2" value="Gastroenteroloģija – 15" checked> Gastroenteroloģija – 15</label><label class="block"><input type="checkbox" class="sectionCheckbox mr-2" value="Ginekoloģija un dzemdniecība" checked> Ginekoloģija un dzemdniecība</label><label class="block"><input type="checkbox" class="sectionCheckbox mr-2" value="INFEKTOLOĢIJA" checked> INFEKTOLOĢIJA</label><label class="block"><input type="checkbox" class="sectionCheckbox mr-2" value="Internās slimības,Hematoloģija" checked> Internās slimības,Hematoloģija</label><label class="block"><input type="checkbox" class="sectionCheckbox mr-2" value="Kardioloģija un elektrokardioloģija" checked> Kardioloģija un elektrokardioloģija</label><label class="block"><input type="checkbox" class="sectionCheckbox mr-2" value="NMP" checked> NMP</label><label class="block"><input type="checkbox" class="sectionCheckbox mr-2" value="Nefroloģija – 15" checked> Nefroloģija – 15</label><label class="block"><input type="checkbox" class="sectionCheckbox mr-2" value="Neiroloģija" checked> Neiroloģija</label><label class="block"><input type="checkbox" class="sectionCheckbox mr-2" value="PSIHIATRIJA" checked> PSIHIATRIJA</label><label class="block"><input type="checkbox" class="sectionCheckbox mr-2" value="Pacientu drošības jautājumi" checked> Pacientu drošības jautājumi</label><label class="block"><input type="checkbox" class="sectionCheckbox mr-2" value="Pediatrija" checked> Pediatrija</label><label class="block"><input type="checkbox" class="sectionCheckbox mr-2" value="Pulmonoloģija – 20" checked> Pulmonoloģija – 20</label><label class="block"><input type="checkbox" class="sectionCheckbox mr-2" value="Reimatoloģija – 10" checked> Reimatoloģija – 10</label><label class="block"><input type="checkbox" class="sectionCheckbox mr-2" value="ĶIRURĢIJA" checked> ĶIRURĢIJA</label>
         </div>
     </div>
 
-    <button onclick="startQuiz()" class="bg-green-600 text-white px-5 py-2 rounded hover:bg-green-700">Start</button>
+    <button onclick="startQuiz()" class="bg-green-600 text-white px-5 py-2 rounded hover:bg-green-700">Sōkt quizu!</button>
+
 </div>
 
 <div class="max-w-4xl mx-auto p-6 hidden" id="quizScreen">
     <div id="timerDisplay" class="hidden fixed top-4 right-4 bg-white border border-red-400 text-red-700 text-lg font-semibold px-4 py-2 rounded shadow z-50"></div>
     <form id="quizForm" class="space-y-6"></form>
-    <button onclick="submitAnswers()" type="button" class="mt-6 bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700">Submit</button>
+    <button onclick="submitAnswers()" type="button" class="mt-6 bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700">Apstipynōt</button>
     <div id="results" class="mt-8"></div>
 </div>
 
